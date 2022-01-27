@@ -4,13 +4,6 @@ import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
 
 
-
-
-
-
-
-
-
 def load_data(train_batch_size, validation_batch_size, image_size = 28):
 
     composed = transforms.Compose([transforms.Resize((image_size, image_size)), transforms.ToTensor()])
