@@ -3,10 +3,10 @@ import torch.nn as nn
 
 
 class FashionNet(nn.Module):
-    def __init__(self, number_of_classes, in_channel=1, image_size=28, batch_size=1):
+    def __init__(self, number_of_classes, in_channel=1, image_size=28):
         super(FashionNet, self).__init__()
         
-        self.relu = nn.ReLU()
+        self.relu = nn.LeakyReLU(negative_slope=0.1)
 
         # --- First Layer --------------------------------------------------------------    
         kernel_size, stride, padding, = 3, 1, 1
@@ -28,7 +28,7 @@ class FashionNet(nn.Module):
 
         self.bn2 = nn.BatchNorm2d(num_features=out_channels_2)
 
-        p = 0.25
+        p = 0.5
         self.dropout_2 = nn.Dropout(p=p)
 
         # --- Fully Connected Layer ----------------------------------------------------
